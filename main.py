@@ -6,7 +6,12 @@ s='''
 ░░░██║░░░██║╚█████╔╝  ░░░██║░░░██║░░██║╚█████╔╝  ░░░██║░░░╚█████╔╝███████╗
 ░░░╚═╝░░░╚═╝░╚════╝░  ░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░  ░░░╚═╝░░░░╚════╝░╚══════╝'''
 print(s)
+# Take input of player names
+player1 = input("Enter player 1 name: ")
+player2 = input("Enter player 2 name: ")
 
+# Initialize current player
+current_player = player1
 board = [    ["", "", ""],
     ["", "", ""],
     ["", "", ""]
@@ -21,6 +26,7 @@ def print_board():
         print("#" + " ".join(" " * 3 for _ in range(3)) + "#")
     print("#" * 13)
 def get_player_move():
+    print(f"{current_player}'s turn")
     while True:
         try:
             row = int(input("Enter row (0-2): "))
@@ -65,3 +71,4 @@ while True:
     if not any("" in row for row in board):
         print("It's a draw!")
     turn = "O" if turn == "X" else "X"
+    current_player = player2 if current_player == player1 else player1
